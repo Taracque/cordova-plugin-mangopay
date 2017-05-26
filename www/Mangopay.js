@@ -1,7 +1,7 @@
 cordova.define("cordova-plugin-mangopay.Mangopay", function(require, exports, module) {
 	var exec = cordova.require('cordova/exec');
 
-	errorMessages = {
+	var errorMessages = {
 		'001999'	:	'Generic Operation error',
 		'001001'	:	'Unsufficient wallet balance',
 		'001002'	:	'Author is not the wallet owner',
@@ -64,14 +64,10 @@ cordova.define("cordova-plugin-mangopay.Mangopay", function(require, exports, mo
 		'09201'		:	'You do not have permissions to make this API call',
 		'02631'		:	'Delay exceeded',
 		'009999'	:	'Browser does not support making cross-origin Ajax calls',
-		'001596'	:	'An HTTP request was blocked by the User's antivirus',
+		'001596'	:	'An HTTP request was blocked by the User\'s antivirus',
 		'001597'	:	'An HTTP request failed',
 		'001598'	:	'A cross-origin HTTP request failed',
-		'001599'	:	'Token processing error',
-		'101699'	:	'CardRegistration should return a valid JSON response',
-		'105204'	:	'CVV_FORMAT_ERROR',
-		'105203'	:	'PAST_EXPIRY_DATE_ERROR or EXPIRY_DATE_FORMAT_ERROR',
-		'105202'	:	'CARD_NUMBER_FORMAT_ERROR'
+		'101699'	:	'CardRegistration should return a valid JSON response'
 	};
 
 	module.exports  = {
