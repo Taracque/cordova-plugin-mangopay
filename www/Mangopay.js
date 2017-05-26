@@ -70,27 +70,33 @@ cordova.define("cordova-plugin-mangopay.Mangopay", function(require, exports, mo
 		'101699'	:	'CardRegistration should return a valid JSON response'
 	};
 
-	module.exports  = {
-		registerCard: function(options, successCallback, errorCallback) {
-			options.cardExpirationMonth = ("00" + options.cardExpirationMonth.toString()).substr(-2);
-			options.cardExpirationYear = ("00" + options.cardExpirationYear.toString()).substr(-2);
-			
-			var mangopayError = function(error) {
-				if (error.substr(0,10) == 'errorCode=') {
-					if (error.substr(10) in errorMessages) {
-						errorMessage = errorMessages[ error.substr(10) ];
-					} else {
-						errorMessages = error.substr(10);
-					}
-				} else {
-					errorMessage = error;
-				}
-				errorCallback(errorMessage);
-			};
-
-			return cordova.exec(successCallback, mangopayError, "Mangopay", "registerCard", [
-				options.cardRegistrationURL, options.preregistrationData, options.accessKey, options.clientId, options.baseURL, options.cardPreregistrationId, options.cardNumber, options.cardExpirationMonth, options.cardExpirationYear, options.cardCvv
-			]);
-		}
+	var Mangopay = function() {
+		console.log('Mangopay loaded');
 	};
+
+	Mangopay.prototype.registerCard = function(options, successCallback, errorCallback) {
+		options.cardExpirationMonth = ("00" + options.cardExpirationMonth.toString()).substr(-2);
+		options.cardExpirationYear = ("00" + options.cardExpirationYear.toString()).substr(-2);
+		
+		var mangopayError = function(error) {
+			if (error.substr(0,10) == 'errorCode=') {
+				if (error.substr(10) in errorMessages) {
+					errorMessage = errorMessages[ error.substr(10) ];
+				} else {
+					errorMessages = error.substr(10);
+				}
+			} else {
+				errorMessage = error;
+			}
+			errorCallback(errorMessage);
+		};
+
+		return cordova.exec(successCallback, mangopayError, "Mangopay", "registerCard", [
+			options.cardRegistrationURL, options.preregistrationData, options.accessKey, options.clientId, options.baseURL, options.cardPreregistrationId, options.cardNumber, options.cardExpirationMonth, options.cardExpirationYear, options.cardCvv
+		]);
+	};
+
+	if (typeof module != 'undefined' && module.exports) {
+		module.exports = Mangopay;
+	}
 });
