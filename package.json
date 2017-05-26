@@ -1,0 +1,45 @@
+{
+  "name": "cordova-plugin-mangopay",
+  "version": "0.0.1",
+  "description": "Cordova Mangopay Plugin",
+  "cordova": {
+    "id": "cordova-plugin-mangopay",
+    "platforms": [
+      "ios",
+      "android",
+      "browser"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Taracque/cordova-plugin-mangopay.git"
+  },
+  "keywords": [
+    "cordova",
+    "mangopay",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-browser"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    },
+    {
+      "name": "cordova-ios",
+      "version": ">=3.5.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=3.5.0"
+    }
+  ],
+  "author": "Taracque",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/Taracque/cordova-plugin-mangopay/issues"
+  },
+  "homepage": "https://github.com/Taracque/cordova-plugin-mangopay#readme"
+}

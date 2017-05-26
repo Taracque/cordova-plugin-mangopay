@@ -18,6 +18,46 @@
  *
  */
 
+function registerCard(success,error,opts) {
+	var regData = opts[0];
+	var cardNumber = opts[1];
+	var cardExpirationMonth = opts[2];
+	var cardExpirationYear = opts[3];
+	var cardCvx = opts[4];
+
+	mangoPay.cardRegistration.baseURL = regData.baseURL;
+	mangoPay.cardRegistration.clientId = regData.clientId;
+
+	var cardRegisterData = {
+		cardRegistrationURL: regData.cardRegistrationURL,
+		preregistrationData: regData.preregistrationData,
+		accessKey: regData.accessKey,
+		Id: regdata.cardPreregistrationId
+	};
+
+	var cardData = {
+		cardNumber: cardNumber,
+		cardExpirationDate: cardExpirationMonth + "/" + cardExpirationYear,
+		cardCvx: cardCvx
+		cardType: regdata.cardType
+	};
+
+	mangoPay.cardRegistration.init(cardRegisterData);
+
+	mangoPay.cardRegistration.registerCard(
+		cardData,
+		function(res) {
+			// Success, you can use res.CardId now that points to registered card
+			success(res.CardId);
+		},
+		function(res) {
+			// Handle error, see res.ResultCode and res.ResultMessage
+			error(res.ResultMessage);
+		}
+	);
+}
+
 module.exports = {
+	registerCard : registerCard
 };
 

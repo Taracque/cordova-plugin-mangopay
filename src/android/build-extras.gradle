@@ -1,0 +1,18 @@
+
+def packageName = getPackageName()
+
+android {
+    defaultConfig {
+        applicationId packageName
+    }
+}
+
+dependencies {
+	compile 'com.mangopay.android.sdk:card-registration-library:1.0.1'
+}
+
+def getPackageName() {
+    def config = file("res/xml/config.xml").getText()
+    def xml = new XmlParser(false, false).parseText(config)
+    return xml.attribute("id")
+}

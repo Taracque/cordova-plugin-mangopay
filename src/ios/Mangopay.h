@@ -17,24 +17,10 @@
  under the License.
  */
 
-@available(iOS 10.0, *)
-@objc(Mangopay) class Mangopay : CDVPlugin {
+#import <Cordova/CDVPlugin.h>
 
-    func register(_ command:CDVInvokedUrlCommand) {
-        self.commandDelegate.run(inBackground: {
-            var pluginResult = CDVPluginResult(
-                status : CDVCommandStatus_ERROR
-            )
+@interface Mangopay : CDVPlugin
 
-            pluginResult = CDVPluginResult(
-                status: CDVCommandStatus_OK
-            )
-            pluginResult?.setKeepCallbackAs(true)
-            
-            self.commandDelegate!.send(
-                pluginResult,
-                callbackId: command.callbackId
-            )
-        });
-    }
-}
+- (void)registerCard:(CDVInvokedUrlCommand*)command;
+
+@end
